@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qy.ebws.mapper.JfxxMapper">
+    <insert id="insertSfdj" parameterType="Jfxx">
+       insert into sfdj(JKTZSH,YWLB,JKR,HPZL,SFXM,XMMC,YSJE,JFSJ,JFR,ZT)
+       values(#{jfxx.jfbh},1,#{jfxx.jfr},1,'EBIKE_SFXM','电动车收费',#{jfxx.zje},#{jfxx.slsj},'计费人暂无',0)
+    </insert>
+
+    <insert id="insertSfmx" parameterType="Jfxx">
+        insert into sfmx(JKTZSH,MXDM,MXMS,SL,YSJE)
+        values(#{jfxx.jfbh},#{jfxx.sfxm},
+        <if test="jfxx.sfxm==1">
+          '新车注册牌证(30元)'
+        </if>
+        <if test="jfxx.sfxm==2">
+          '重发号牌(22)'
+        </if>
+        <if test="jfxx.sfxm==3">
+          '重发行驶证(5元)'
+        </if>
+        ,1,#{jfxx.sfje})
+    </insert>
+    <select id="queryYjfxx" parameterType="Cxjfxx" resultType="RetJfxx">
+        select JKTZSH jfbh,JKR jfr,SSJE jfje,SFSJ jfsj from sfdj t
+        <where>
+            <if test="cxjfxx.jfbh!=null">
+                t.JKTZSH = #{cxjfxx.jfbh}
+            </if>
+            <if test="cxjfxx.jfr!=null and cxjfxx.jfr!=''">
+                and t.JKR = #{cxjfxx.jfr}
+            </if>
+            <if test="cxjfxx.jfsj!=null">
+               and t.SFSJ = #{cxjfxx.jfsj}
+            </if>
+        </where>
+    </select>
+</mapper>

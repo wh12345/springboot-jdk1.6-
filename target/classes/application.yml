@@ -1,0 +1,25 @@
+server:
+  port: 9080
+  context-path: /ebws
+logging:
+  file: dmslog.log
+spring:
+    datasource:
+      url: jdbc:oracle:thin:@127.0.0.1:1521:myorcl
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      username: dsm
+      password: oracleadmin
+      type: com.alibaba.druid.pool.DruidDataSource
+## 连接池的配置信息
+      druid:
+          initialSize: 5
+          minIdle: 5
+          maxActive: 20
+          maxWait: 6000
+          timeBetweenEvictionRunsMillis: 6000
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.qy.ebws.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+ebws:
+   mtoken: "2R9CMX7Y9KRNCF42RZMHIAQHPEZG3KWM"
