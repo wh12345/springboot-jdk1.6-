@@ -1,0 +1,2 @@
+在jdk1.6用springboot框架有很多需要注意的地方,项目创建的方式是创建maven项目，且springboot的版本不能太高，springboot的版本最好是1.*系列，与mybatis连用的
+时候也要注意版本的问题
