@@ -86,7 +86,7 @@
     <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
-        <version>1.2.54</version>
+        <version>1.2.83</version>
     </dependency>
     <!---使用阿里巴巴druid连接池-->
     <dependency>
